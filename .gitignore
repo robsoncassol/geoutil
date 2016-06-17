@@ -1,0 +1,11 @@
+*.settings
+*.component
+*.prefs
+*.component
+*.classpath
+*.metadata
+*.project
+/WebContent
+/build
+/target
+/bin
