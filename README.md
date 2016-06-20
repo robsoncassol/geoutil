@@ -1,2 +1,2 @@
 # geoutil
-useful classe to handle with geolocations 
+useful classes to handle geolocations 
