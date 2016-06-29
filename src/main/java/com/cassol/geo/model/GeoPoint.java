@@ -22,17 +22,15 @@ public class GeoPoint {
 	public GeoPoint() {
 	}
 
-	public GeoPoint(Double altitude, Double latitude, Double longitude) {
-		super();
-		this.altitude = altitude;
-		this.latitude = latitude;
-		this.longitude = longitude;
+	public GeoPoint(Number altitude, Number latitude, Number longitude) {
+		this(latitude,longitude);
+		this.altitude = altitude.doubleValue();
 	}
 
-	public GeoPoint(Double latitude, Double longitude) {
+	public GeoPoint(Number latitude, Number longitude) {
 		super();
-		this.latitude = latitude;
-		this.longitude = longitude;
+		this.latitude = latitude.doubleValue();
+		this.longitude =longitude.doubleValue();
 	}
 
 	public Double getAltitude() {

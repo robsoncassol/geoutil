@@ -37,7 +37,7 @@ public class GeoPolygonTest {
 		GeoPolygon polygon = build_a_polygon();
 		Float meters = polygon.farthestPointFromCenterInMeters();
 		System.out.println(meters);
-		assertEquals(new Float(515.3875), meters);
+		assertEquals(new Float(515.9649), meters);
 	}
 	
 	@Test
@@ -46,15 +46,36 @@ public class GeoPolygonTest {
 		Assert.assertTrue(polygon.contains(new GeoPoint(-23.230485, -45.937856)));
 	}
 
+	@Test
+	public void calculateIfThePointIsOutsideThePolygon() {
+		GeoPolygon polygon = build_a_polygon();
+		Assert.assertFalse(polygon.contains(new GeoPoint(-24.230485, -45.937856)));
+	}
+
+	@Test
+	public void calculateIfThePointIsInsideTheConvexPolygon() {
+		GeoPolygon polygon = new GeoPolygon()
+				.addVertex(new GeoPoint(2,3))
+			    .addVertex(new GeoPoint(4, 1))
+			    .addVertex(new GeoPoint(4, 3))
+			    .addVertex(new GeoPoint(6,3))
+			    .addVertex(new GeoPoint(6,1))
+			    .addVertex(new GeoPoint(7,1))
+			    .addVertex(new GeoPoint(7,5))
+			    .addVertex(new GeoPoint(3,5))
+			    .build();
+		
+		Assert.assertFalse(polygon.contains(new GeoPoint(5,2)));
+	}
+
 	private GeoPolygon build_a_polygon() {
-		GeoPolygon polygon = new GeoPolygon();
-		polygon.addVertex(new GeoPoint(-23.227148, -45.937022))
-			   .addVertex(new GeoPoint(-23.228578, -45.933326))
-			   .addVertex(new GeoPoint(-23.231796, -45.936765))
-			   .addVertex(new GeoPoint(-23.230195, -45.942072))
-			   .addVertex(new GeoPoint(-23.225312, -45.941732))
-			   .build();
-		return polygon;
+		return new GeoPolygon()
+				.addVertex(new GeoPoint(-23.227148, -45.937022))
+			    .addVertex(new GeoPoint(-23.228578, -45.933326))
+			    .addVertex(new GeoPoint(-23.231796, -45.936765))
+			    .addVertex(new GeoPoint(-23.230195, -45.942072))
+			    .addVertex(new GeoPoint(-23.225312, -45.941732))
+			    .build();
 	}
 
 }

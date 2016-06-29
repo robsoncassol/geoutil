@@ -36,8 +36,9 @@ public class GeoPolygon implements GeoContainer{
 		return this;
 	}
 	
-	public void build(){
+	public GeoPolygon build(){
 		center = centroid(vertices);
+		return this;
 	}
 	
 	public GeoPoint getCenter() {
@@ -97,9 +98,46 @@ public class GeoPolygon implements GeoContainer{
 	}
 
 	@Override
-	public boolean contains(GeoPoint point) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean contains(GeoPoint p) {
+		int i;
+		double angle = 0;
+		GeoPoint p1 = new GeoPoint();
+		GeoPoint p2 = new GeoPoint();
+		int n = vertices.size();
+
+		for (i = 0; i < vertices.size(); i++) {
+			p1.setLatitude(vertices.get(i).getLatitude() - p.getLatitude());
+			p1.setLongitude(vertices.get(i).getLongitude() - p.getLongitude());
+			p2.setLatitude(vertices.get((i + 1) % n).getLatitude() - p.getLatitude());
+			p2.setLongitude(vertices.get((i + 1) % n).getLongitude() - p.getLongitude());
+			angle += Angle2D(p1.getLatitude(), p1.getLongitude(), p2.getLatitude(), p2.getLongitude());
+		}
+
+		if (Math.abs(angle) < Math.PI)
+			return false;
+		else
+			return true;
+	}
+	
+	/*
+	   Return the angle between two vectors on a plane
+	   The angle is from vector 1 to vector 2, positive anticlockwise
+	   The result is between -pi -> pi
+	*/
+	private double Angle2D(double x1, double y1, double x2, double y2) {
+		double dtheta, theta1, theta2;
+
+		theta1 = Math.atan2(y1, x1);
+		theta2 = Math.atan2(y2, x2);
+		dtheta = theta2 - theta1;
+
+		while (dtheta > Math.PI)
+			dtheta -= 2 * Math.PI;
+
+		while (dtheta < -Math.PI)
+			dtheta += 2 * Math.PI;
+
+		return dtheta;
 	}
 	
 
