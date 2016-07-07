@@ -147,8 +147,7 @@ public class GeoPolygon implements GeoContainer{
 	 */
 	@Override
 	public Double north() {
-		vertices.stream().mapToDouble(GeoPoint::getLatitude).max().getAsDouble();
-		return null;
+		return vertices.stream().mapToDouble(GeoPoint::getLongitude).max().getAsDouble();
 	}
 
 	/**
@@ -156,8 +155,7 @@ public class GeoPolygon implements GeoContainer{
 	 */
 	@Override
 	public Double south() {
-		// TODO Auto-generated method stub
-		return null;
+		return vertices.stream().mapToDouble(GeoPoint::getLongitude).min().getAsDouble();
 	}
 
 	/**
@@ -165,8 +163,7 @@ public class GeoPolygon implements GeoContainer{
 	 */
 	@Override
 	public Double east() {
-		// TODO Auto-generated method stub
-		return null;
+		return vertices.stream().mapToDouble(GeoPoint::getLatitude).max().getAsDouble();
 	}
 	
 	/**
@@ -174,8 +171,7 @@ public class GeoPolygon implements GeoContainer{
 	 */
 	@Override
 	public Double west() {
-		// TODO Auto-generated method stub
-		return null;
+		return vertices.stream().mapToDouble(GeoPoint::getLatitude).min().getAsDouble();
 	}
 	
 	

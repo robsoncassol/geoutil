@@ -49,26 +49,22 @@ public class GeoCircle implements GeoContainer{
 
 	@Override
 	public Double north() {
-		// TODO Auto-generated method stub
-		return null;
+		return center.translateCoordinates(0D, radius.intValue()).getLongitude();
 	}
 
 	@Override
 	public Double south() {
-		// TODO Auto-generated method stub
-		return null;
+		return center.translateCoordinates(180D, radius.intValue()).getLongitude();
 	}
 
 	@Override
 	public Double east() {
-		// TODO Auto-generated method stub
-		return null;
+		return center.translateCoordinates(90D, radius.intValue()).getLatitude();
 	}
 
 	@Override
 	public Double west() {
-		// TODO Auto-generated method stub
-		return null;
+		return center.translateCoordinates(270D, radius.intValue()).getLatitude();
 	}
 
 }

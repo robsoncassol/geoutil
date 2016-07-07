@@ -77,5 +77,80 @@ public class GeoPolygonTest {
 			    .addVertex(new GeoPoint(-23.225312, -45.941732))
 			    .build();
 	}
+	
+	@Test
+	public void testCentralRegion(){
+		GeoPolygon polygon = new GeoPolygon()
+				.addVertex(new GeoPoint(3, 3))
+				.addVertex(new GeoPoint(3, -3))
+				.addVertex(new GeoPoint(-3, -3))
+				.addVertex(new GeoPoint(-3, 3))
+				.build();
+		
+		Assert.assertEquals(new Double(-3), polygon.west());
+		Assert.assertEquals(new Double(3), polygon.east());
+		Assert.assertEquals(new Double(3), polygon.north());
+		Assert.assertEquals(new Double(-3), polygon.south());
+	}
+
+	@Test
+	public void testNortheastRegion(){
+		GeoPolygon polygon = new GeoPolygon()
+				.addVertex(new GeoPoint(3, 3))
+				.addVertex(new GeoPoint(3, 6))
+				.addVertex(new GeoPoint(6, 6))
+				.addVertex(new GeoPoint(6, 3))
+				.build();
+		
+		Assert.assertEquals(new Double(3), polygon.west());
+		Assert.assertEquals(new Double(6), polygon.east());
+		Assert.assertEquals(new Double(6), polygon.north());
+		Assert.assertEquals(new Double(3), polygon.south());
+	}
+
+	@Test
+	public void testSoutheastRegion(){
+		GeoPolygon polygon = new GeoPolygon()
+				.addVertex(new GeoPoint(3, -3))
+				.addVertex(new GeoPoint(6, -3))
+				.addVertex(new GeoPoint(6, -6))
+				.addVertex(new GeoPoint(3, -6))
+				.build();
+		
+		Assert.assertEquals(new Double(3), polygon.west());
+		Assert.assertEquals(new Double(6), polygon.east());
+		Assert.assertEquals(new Double(-3), polygon.north());
+		Assert.assertEquals(new Double(-6), polygon.south());
+	}
+
+	@Test
+	public void testSouthwestRegion(){
+		GeoPolygon polygon = new GeoPolygon()
+				.addVertex(new GeoPoint(-3, -3))
+				.addVertex(new GeoPoint(-6, -3))
+				.addVertex(new GeoPoint(-6, -6))
+				.addVertex(new GeoPoint(-3, -6))
+				.build();
+		
+		Assert.assertEquals(new Double(-6), polygon.west());
+		Assert.assertEquals(new Double(-3), polygon.east());
+		Assert.assertEquals(new Double(-3), polygon.north());
+		Assert.assertEquals(new Double(-6), polygon.south());
+	}
+
+	@Test
+	public void testNorthwestRegion(){
+		GeoPolygon polygon = new GeoPolygon()
+				.addVertex(new GeoPoint(-3, 3))
+				.addVertex(new GeoPoint(-3, 6))
+				.addVertex(new GeoPoint(-6, 6))
+				.addVertex(new GeoPoint(-6, 3))
+				.build();
+		
+		Assert.assertEquals(new Double(-6), polygon.west());
+		Assert.assertEquals(new Double(-3), polygon.east());
+		Assert.assertEquals(new Double(6), polygon.north());
+		Assert.assertEquals(new Double(3), polygon.south());
+	}
 
 }
