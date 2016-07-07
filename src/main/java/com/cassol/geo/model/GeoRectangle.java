@@ -1,35 +1,22 @@
 package com.cassol.geo.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-
-/**
- * The GeoUtil. <br>
- * 
- * @see {@link Builder}
- * @author Robson Cassol (robsoncassol@gmail.com)
- */
-
-public class GeoCircle implements GeoContainer{
+public class GeoRectangle implements GeoContainer{
 	
-	private static final long serialVersionUID = 7730558254610056883L;
+	private static final long serialVersionUID = 1030300668803644558L;
 	
 	private GeoPoint center;
-	private Float radius;
 	
 	
-	public GeoCircle(GeoPoint center, Float radius) {
+	public GeoRectangle(GeoPoint leftTop, GeoPoint rightTop, GeoPoint leftBotton, GeoPoint rightBotton) {
 		super();
-		this.center = center;
-		this.radius = radius;
 	}
 
 	@Override
 	public boolean contains(GeoPoint point) {
-		float distance = center.distance(point);
-		return radius > distance;
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
@@ -39,12 +26,13 @@ public class GeoCircle implements GeoContainer{
 
 	@Override
 	public Float radius() {
-		return radius;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<GeoPoint> points() {
-		return new ArrayList<GeoPoint>(Arrays.asList(center));
+		return null;
 	}
 
 	@Override

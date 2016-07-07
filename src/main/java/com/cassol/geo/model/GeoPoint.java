@@ -1,5 +1,6 @@
 package com.cassol.geo.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,9 @@ import java.util.List;
  */
 
 
-public class GeoPoint {
+public class GeoPoint implements Serializable {
+	
+	private static final long serialVersionUID = 8180946491922046474L;
 
 	private Double altitude;
 	private Double latitude;

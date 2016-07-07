@@ -16,6 +16,8 @@ import java.util.TreeMap;
 
 public class GeoPolygon implements GeoContainer{
 	
+	private static final long serialVersionUID = 4440572788874968195L;
+	
 	private List<GeoPoint> vertices = new ArrayList<GeoPoint>();
 	private GeoPoint center;
 	
@@ -139,6 +141,44 @@ public class GeoPolygon implements GeoContainer{
 
 		return dtheta;
 	}
+
+	/**
+	 * Return the most northerly point 
+	 */
+	@Override
+	public Double north() {
+		vertices.stream().mapToDouble(GeoPoint::getLatitude).max().getAsDouble();
+		return null;
+	}
+
+	/**
+	 * Return the southernmost point 
+	 */
+	@Override
+	public Double south() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * Return the point further east 
+	 */
+	@Override
+	public Double east() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	/**
+	 * the furthest point west
+	 */
+	@Override
+	public Double west() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 	
 
 }

@@ -1,5 +1,6 @@
 package com.cassol.geo.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -10,11 +11,16 @@ import java.util.List;
  * @author Robson Cassol (robsoncassol@gmail.com)
  */
 
-public interface GeoContainer {
+public interface GeoContainer extends Serializable{
 
 	boolean contains(GeoPoint point);
 	GeoPoint center();
 	Float radius();
 	List<GeoPoint> points();
+	
+	Double north(); 
+	Double south(); 
+	Double east(); 
+	Double west(); 
 	
 }
