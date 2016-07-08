@@ -109,18 +109,18 @@ public class GeoPolygonTest {
 	}
 
 	@Test
-	public void testSoutheastRegion(){
+	public void testNorthwestRegion(){
 		GeoPolygon polygon = new GeoPolygon()
 				.addVertex(new GeoPoint(3, -3))
-				.addVertex(new GeoPoint(6, -3))
-				.addVertex(new GeoPoint(6, -6))
 				.addVertex(new GeoPoint(3, -6))
+				.addVertex(new GeoPoint(6, -6))
+				.addVertex(new GeoPoint(6, -3))
 				.build();
 		
-		Assert.assertEquals(new Double(3), polygon.west());
-		Assert.assertEquals(new Double(6), polygon.east());
-		Assert.assertEquals(new Double(-3), polygon.north());
-		Assert.assertEquals(new Double(-6), polygon.south());
+		Assert.assertEquals(new Double(-6), polygon.west());
+		Assert.assertEquals(new Double(-3), polygon.east());
+		Assert.assertEquals(new Double(6), polygon.north());
+		Assert.assertEquals(new Double(3), polygon.south());
 	}
 
 	@Test
@@ -139,7 +139,7 @@ public class GeoPolygonTest {
 	}
 
 	@Test
-	public void testNorthwestRegion(){
+	public void testSoutheastRegion(){
 		GeoPolygon polygon = new GeoPolygon()
 				.addVertex(new GeoPoint(-3, 3))
 				.addVertex(new GeoPoint(-3, 6))
@@ -147,10 +147,10 @@ public class GeoPolygonTest {
 				.addVertex(new GeoPoint(-6, 3))
 				.build();
 		
-		Assert.assertEquals(new Double(-6), polygon.west());
-		Assert.assertEquals(new Double(-3), polygon.east());
-		Assert.assertEquals(new Double(6), polygon.north());
-		Assert.assertEquals(new Double(3), polygon.south());
+		Assert.assertEquals(new Double(3), polygon.west());
+		Assert.assertEquals(new Double(6), polygon.east());
+		Assert.assertEquals(new Double(-3), polygon.north());
+		Assert.assertEquals(new Double(-6), polygon.south());
 	}
 
 }

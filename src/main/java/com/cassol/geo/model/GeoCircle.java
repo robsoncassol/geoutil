@@ -20,10 +20,10 @@ public class GeoCircle implements GeoContainer{
 	private Float radius;
 	
 	
-	public GeoCircle(GeoPoint center, Float radius) {
+	public GeoCircle(GeoPoint center, Number radius) {
 		super();
 		this.center = center;
-		this.radius = radius;
+		this.radius = radius.floatValue();
 	}
 
 	@Override
@@ -49,22 +49,22 @@ public class GeoCircle implements GeoContainer{
 
 	@Override
 	public Double north() {
-		return center.translateCoordinates(0D, radius.intValue()).getLongitude();
+		return center.translateCoordinates(0D, radius.intValue()).getLatitude();
 	}
 
 	@Override
 	public Double south() {
-		return center.translateCoordinates(180D, radius.intValue()).getLongitude();
+		return center.translateCoordinates(180D, radius.intValue()).getLatitude();
 	}
 
 	@Override
 	public Double east() {
-		return center.translateCoordinates(90D, radius.intValue()).getLatitude();
+		return center.translateCoordinates(90D, radius.intValue()).getLongitude();
 	}
 
 	@Override
 	public Double west() {
-		return center.translateCoordinates(270D, radius.intValue()).getLatitude();
+		return center.translateCoordinates(270D, radius.intValue()).getLongitude();
 	}
 
 }

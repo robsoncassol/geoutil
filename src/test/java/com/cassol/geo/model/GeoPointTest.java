@@ -40,6 +40,7 @@ public class GeoPointTest {
 	private void testTransalte(double angle, int distance) {
 		GeoPoint geoPoint = new GeoPoint(-23.214254, -45.935765);
 		GeoPoint translatedPoint1 = geoPoint.translateCoordinates(angle, distance);
+		System.out.println(geoPoint + "  -->  " + translatedPoint1);
 		float distance1 = geoPoint.distance(translatedPoint1);
 		assertTrue(distance1 > 90);
 		assertTrue(distance1 < 110);
