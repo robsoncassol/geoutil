@@ -1,6 +1,7 @@
 package com.cassol.geo.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.TreeMap;
@@ -21,7 +22,7 @@ public class GeoPolygon implements GeoContainer{
 	private List<GeoPoint> vertices = new ArrayList<GeoPoint>();
 	private GeoPoint center;
 	
-	public GeoPolygon(List<GeoPoint> vertices) {
+	public GeoPolygon(Collection<GeoPoint> vertices) {
 		super();
 		for (GeoPoint geoPoint : vertices) {
 			this.addVertex(geoPoint);
